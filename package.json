@@ -2,9 +2,10 @@
   "name": "collegues-front",
   "version": "0.0.0",
   "scripts": {
+
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --base-href https://ThibaultDos.github.io/collegues-front/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
