@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { collegueMock } from "./mock/collegues.mock";
+
 
 @Component({
   selector: 'app-root',
   template: `
-    <!--The content below is only a placeholder and can be replaced.-->
     <!doctype html>
 <html>
 
@@ -121,10 +122,7 @@ import { Component } from '@angular/core';
                             </div>
 
                             <div class="col-sm-4">
-                                <p class="card-text">récupérer la fonction</p>
-                                <p class="card-text">récupérer le département</p>
-                                <p class="card-text">récupérer l'e-mail</p>
-                                <p class="card-text">récupérer le téléphone</p>
+                                <p class="card-text"><app-collegue [collegueMock]="collegue"></app-collegue></p>
                             </div>
                         </div>
                     </div>
@@ -325,5 +323,6 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
+    collegue = collegueMock ;
   title = 'collegues-front';
 }
