@@ -109,7 +109,7 @@ import { Component } from '@angular/core';
 
                             <div class="col-sm-4">
                                 <img class="img-fluid rounded"
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Chihuahuas-_Holly%2C_Nina%2C_Doralice.jpg/1280px-Chihuahuas-_Holly%2C_Nina%2C_Doralice.jpg" />
+                                    src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fdhs.gov%2Fsites%2Fdefault%2Ffiles%2Fimages%2FREAL-ID_icon_public.png&f=1" />
                             </div>
 
 
@@ -144,7 +144,7 @@ import { Component } from '@angular/core';
 
                             <div class="col-sm-4">
                                 <img class="img-fluid rounded"
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Chihuahuas-_Holly%2C_Nina%2C_Doralice.jpg/1280px-Chihuahuas-_Holly%2C_Nina%2C_Doralice.jpg" />
+                                    src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fdhs.gov%2Fsites%2Fdefault%2Ffiles%2Fimages%2FREAL-ID_icon_public.png&f=1" />
                             </div>
 
 
@@ -179,7 +179,7 @@ import { Component } from '@angular/core';
 
                             <div class="col-sm-4">
                                 <img class="img-fluid rounded"
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Chihuahuas-_Holly%2C_Nina%2C_Doralice.jpg/1280px-Chihuahuas-_Holly%2C_Nina%2C_Doralice.jpg" />
+                                    src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fdhs.gov%2Fsites%2Fdefault%2Ffiles%2Fimages%2FREAL-ID_icon_public.png&f=1" />
                             </div>
 
 
@@ -216,7 +216,7 @@ import { Component } from '@angular/core';
 
                         <div class="col-sm-4">
                             <img class="img-fluid rounded"
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Chihuahuas-_Holly%2C_Nina%2C_Doralice.jpg/1280px-Chihuahuas-_Holly%2C_Nina%2C_Doralice.jpg" />
+                                src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fdhs.gov%2Fsites%2Fdefault%2Ffiles%2Fimages%2FREAL-ID_icon_public.png&f=1" />
                         </div>
 
 
@@ -251,7 +251,7 @@ import { Component } from '@angular/core';
 
                         <div class="col-sm-4">
                             <img class="img-fluid rounded"
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Chihuahuas-_Holly%2C_Nina%2C_Doralice.jpg/1280px-Chihuahuas-_Holly%2C_Nina%2C_Doralice.jpg" />
+                                src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fdhs.gov%2Fsites%2Fdefault%2Ffiles%2Fimages%2FREAL-ID_icon_public.png&f=1" />
                         </div>
 
 
