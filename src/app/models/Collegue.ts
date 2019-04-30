@@ -8,4 +8,7 @@ export class Collegue {
         public dateDeNaissance: Date,
         public photoUrl: string,
     ) { }
+
+        
+
 }

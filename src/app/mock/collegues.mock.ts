@@ -6,7 +6,7 @@ const collegueMock: Collegue = new Collegue(
     'Sophie',
     'email@valide.com',
     new Date(1996, 2, 30),
-    'http://img.png'
+    'https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fdhs.gov%2Fsites%2Fdefault%2Ffiles%2Fimages%2FREAL-ID_icon_public.png&f=1'
 );
 
 export { collegueMock };

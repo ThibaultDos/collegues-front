@@ -1,8 +1,43 @@
-<ul>
-  <li>{{collegueMock.matricule}}</li>
-  <li>{{collegueMock.nom}}</li>
-  <li>{{collegueMock.prenoms}}</li>
-  <li>{{collegueMock.email}}</li>
-  <li>{{collegueMock.dateDeNaissance | date : 'dd/MM/yyyy'}}</li>
-  <li>{{collegueMock.photoUrl}}</li>
-</ul>
+<div class="row">
+
+  <div class="col-2">
+    <img class="img-fluid" [src]="collegueMock.photoUrl">
+  </div>
+
+  <div class="col-2">
+    <ul>
+      <li>Matricule</li>
+      <li>Nom</li>
+      <li>Prénoms</li>
+      <li>Date de naissance</li>
+      <li *ngIf="!modeEdition">E-mail</li>
+      <ng-container *ngIf="modeEdition">
+        <li> <label for="nouveauMail">E-mail</label> </li>
+        <li> <label for="nouvellePhoto">Photo URL</label> </li>
+      </ng-container>
+    </ul>
+    <button *ngIf="!modeEdition" class="btn btn-primary" (click)="creerCollegue()">
+      Créer un nouveau collègue
+    </button>
+  </div>
+
+  <div class="col-2">
+    <ul>
+      <li>{{collegueMock.matricule}}</li>
+      <li>{{collegueMock.nom | uppercase}}</li>
+      <li>{{collegueMock.prenoms}}</li>
+      <li>{{collegueMock.dateDeNaissance | date : 'dd/MM/yyyy'}}</li>
+      <li *ngIf="!modeEdition">{{collegueMock.email}}</li>
+      <div *ngIf="modeEdition" class="form-group">
+        <input type="text" class="form-control" #nouveauMail />
+        <input type="text" class="form-control" #nouvellePhoto />
+        <button class="btn btn-primary float-right">Valider</button>
+      </div>
+    </ul>
+
+    <button *ngIf="!modeEdition" class="btn btn-primary float-right" (click)="modifierCollegue()">
+      Modifier
+    </button>
+
+  </div>
+</div>

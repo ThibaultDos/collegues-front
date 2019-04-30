@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
-import { collegueMock } from '../mock/collegues.mock';
 
 @Component({
   selector: 'app-collegue',
@@ -10,13 +9,25 @@ import { collegueMock } from '../mock/collegues.mock';
 export class CollegueComponent implements OnInit {
 
   @Input() collegueMock: Collegue;
-  @Input() nom: string;
+  
+  collegue : Collegue = this.collegueMock;
 
+  constructor() { }
+  
+  ngOnInit() {
+  }
+  
+  modeEdition: boolean = false;
+  modeCreation: boolean = false;
 
+  creerCollegue() {
+    console.log("Création d'un nouveau collègue");
+    this.modeCreation = true;
+  }
 
-constructor() { }
-
-ngOnInit() {
-}
+  modifierCollegue() {
+    console.log(`Modification du collègue`);
+    this.modeEdition = true;
+  }
 
 }
