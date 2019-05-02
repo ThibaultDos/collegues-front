@@ -12,22 +12,18 @@ import { Collegue } from './models/Collegue';
       </div>
 
       <div class="col-8">
-        <app-collegue [collegueMock]="collegue"></app-collegue>
+        <app-collegue [collegue]="collegue"></app-collegue>
       </div>
     </div>
   `,
   styles: []
 })
 export class AppComponent implements OnInit {
-  collegueMock :Collegue;
   collegue :Collegue;
 
-  constructor(private _dataSrv: DataService) { }
+  constructor(private _dataService: DataService) { }
 
-  ngOnInit() {
-    this.collegueMock = this._dataSrv.recupererCollegueCourant();
-    this.collegue = this.collegueMock;
-  }
+  ngOnInit() { }
 
 
   title = 'collegues-front';

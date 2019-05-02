@@ -1,9 +1,12 @@
+<p>Recherche par nom
+  <input type="texte" #nomCollegue />
+  <button class="btn btn-primary" (click)="afficherCollegue(nomCollegue)">Rechercher</button>
+</p>
 
-  <p>Recherche par nom
-    <input type="texte" #rechercheCollegueParNom />
-    <button class="btn btn-primary" (click)="afficherCollegue(rechercheCollegueParNom)">Rechercher</button>
-  </p>
+<ul class="nav flex-column">
+  <li *ngFor="let matriculeCollegue of listeMatricules" class="nav-item">
+    <a class="nav-link" href="#" (click)="afficherCollegueDepuisMatricule(matriculeCollegue)">{{matriculeCollegue}}</a>
+  </li>
+</ul>
 
-  <ul>
-    
-    <li *ngFor="let mat of listeMatriculesMock">{{mat}}</li></ul>
+

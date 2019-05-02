@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+
+import { DataService } from '../services/data.service';
+
 import { Collegue } from '../models/Collegue';
 
 @Component({
@@ -8,13 +11,14 @@ import { Collegue } from '../models/Collegue';
 })
 export class CollegueComponent implements OnInit {
 
-  @Input() collegueMock: Collegue;
-  
-  collegue : Collegue = this.collegueMock;
+  @Input() collegue: Collegue;
 
-  constructor() { }
+  constructor(private _dataService: DataService) { }
   
   ngOnInit() {
+    this._dataService.subjectCollegue.subscribe(
+      collegue => {this.collegue=collegue}
+    )
   }
   
   modeEdition: boolean = false;

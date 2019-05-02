@@ -1,7 +1,7 @@
 <div class="row">
 
   <div class="col-2">
-    <img class="img-fluid" [src]="collegueMock.photoUrl">
+    <img class="img-fluid" [src]="collegue.photoUrl">
   </div>
 
   <div class="col-2">
@@ -23,11 +23,11 @@
 
   <div class="col-2">
     <ul>
-      <li>{{collegueMock.matricule}}</li>
-      <li>{{collegueMock.nom | uppercase}}</li>
-      <li>{{collegueMock.prenoms}}</li>
-      <li>{{collegueMock.dateDeNaissance | date : 'dd/MM/yyyy'}}</li>
-      <li *ngIf="!modeEdition">{{collegueMock.email}}</li>
+      <li>{{collegue.matricule}}</li>
+      <li>{{collegue.nom | uppercase}}</li>
+      <li>{{collegue.prenoms}}</li>
+      <li>{{collegue.dateDeNaissance | date : 'dd/MM/yyyy'}}</li>
+      <li *ngIf="!modeEdition">{{collegue.email}}</li>
       <div *ngIf="modeEdition" class="form-group">
         <input type="text" class="form-control" #nouveauMail />
         <input type="text" class="form-control" #nouvellePhoto />

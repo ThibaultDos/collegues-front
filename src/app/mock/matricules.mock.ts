@@ -1,1 +1,0 @@
-export const listeMatriculeMock: string[] = ['matricule1', 'matricule2', 'matricule3', 'matricule4', 'matricule5'] ;
