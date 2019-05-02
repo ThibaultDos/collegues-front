@@ -16,8 +16,8 @@ export class AppRechercheCollegueParNomComponent implements OnInit {
   ngOnInit() {
   }
 
-  afficherCollegue(nom : string) {
-    this.listeMatriculesMock = this._dataSrv.rechercherParNom(nom);
+  afficherCollegue(rechercheCollegueParNom : HTMLInputElement) {
+    this.listeMatriculesMock = this._dataSrv.rechercherParNom(rechercheCollegueParNom.value);
   }
 
 
