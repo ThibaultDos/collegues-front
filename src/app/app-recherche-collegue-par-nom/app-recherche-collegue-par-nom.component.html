@@ -1,0 +1,9 @@
+
+  <p>Recherche par nom
+    <input type="texte" #recherCollegueParNom />
+    <button class="btn btn-primary" (click)="afficherCollegue()">Rechercher</button>
+  </p>
+
+  <ul>
+    
+    <li *ngFor="let mat of listeMatriculesMock">{{mat}}</li></ul>
