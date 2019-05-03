@@ -26,14 +26,51 @@ export class DataService {
     this.subjectCollegue.next(data);
   }
 
-  recupererCollegue(matricule: string): Observable<Collegue> {
+  rechercherCollegueParMatricule(matricule: string): Observable<Collegue> {
     return this._http.get<Collegue>(`${URL_BACKEND}/collegues/${matricule}`)
-      .pipe(tap(collegue => {this.publish(collegue)
+      .pipe(tap(collegue => {
+        this.publish(collegue)
       }));
   }
 
-  rechercherParNom(nom: string): Observable<string[]> {
+  rechercherMatriculeParNom(nom: string): Observable<string[]> {
     return this._http.get<string[]>(`${URL_BACKEND}/collegues?nom=${nom}`);
+  }
+
+  recupererTousLesMatricules(): Observable<string[]> {
+    return this._http.get<string[]>(`${URL_BACKEND}/collegues/matricules`);
+  }
+
+  ajouterCollegue(nouveauCollegue: Collegue): Observable<Collegue> {
+    const body = {
+      'nom': nouveauCollegue.nom,
+      'prenoms': nouveauCollegue.prenoms,
+      'dateDeNaissance': nouveauCollegue.dateDeNaissance,
+      'photoUrl': nouveauCollegue.photoUrl
+    }
+    return this._http.post<Collegue>(`${URL_BACKEND}/collegues`, body);
+  }
+
+  modifierEmail(matricule:string, nouveauMail: string): Observable<Collegue> {
+    const body = {
+      'matricule' : matricule,
+      'email': nouveauMail
+    }
+    return this._http.patch<Collegue>(`${URL_BACKEND}/collegues/${matricule}`, body)
+      .pipe(tap(collegue => {
+        this.publish(collegue)
+      }));
+  }
+
+  modifierPhotoUrl(matricule:string, nouvelPhotoUrl: string): Observable<Collegue> {
+    const body = {
+      'matricule' : matricule,
+      'photoUrl': nouvelPhotoUrl
+    }
+    return this._http.patch<Collegue>(`${URL_BACKEND}/collegues/${matricule}`, body)
+      .pipe(tap(collegue => {
+        this.publish(collegue)
+      }));
   }
 
 }

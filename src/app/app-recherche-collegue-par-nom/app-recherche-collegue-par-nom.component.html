@@ -1,6 +1,10 @@
 <p>Recherche par nom
   <input type="texte" #nomCollegue />
-  <button class="btn btn-primary" (click)="afficherCollegue(nomCollegue)">Rechercher</button>
+  <button class="btn btn-primary" (click)="afficherMatriculeDepuisNom(nomCollegue)">Rechercher</button>
+</p>
+
+<p *ngIf="listeMatricules && listeMatricules.length == 0">Aucun collègue trouvé ?
+  <button class="btn btn-primary" (click)="afficherTousLesMatricules()">Afficher tous les matricules existants</button>
 </p>
 
 <ul class="nav flex-column">

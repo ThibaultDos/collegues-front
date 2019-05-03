@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { DataService } from '../services/data.service';
 
@@ -17,16 +17,28 @@ export class AppRechercheCollegueParNomComponent implements OnInit {
   ngOnInit() {
   }
 
-  afficherCollegue(rechercheCollegueParNom: HTMLInputElement) {
-    this._dataService.rechercherParNom(rechercheCollegueParNom.value)
+  afficherMatriculeDepuisNom(nomCollegue: HTMLInputElement) {
+    this._dataService.rechercherMatriculeParNom(nomCollegue.value)
       .subscribe(tabMatsServeur => {
         this.listeMatricules = tabMatsServeur
       },
-        err => { });
+        error => { },
+        () => { }
+      );
+  }
+
+  afficherTousLesMatricules() {
+    this._dataService.recupererTousLesMatricules()
+      .subscribe(tousLesMatriculesServeur => {
+        this.listeMatricules = tousLesMatriculesServeur
+      },
+        error => { },
+        () => { }
+      );
   }
 
   afficherCollegueDepuisMatricule(matriculeCollegue: string) {
-    this._dataService.recupererCollegue(matriculeCollegue).subscribe(
+    this._dataService.rechercherCollegueParMatricule(matriculeCollegue).subscribe(
       collegueServeur => { },
       error => { },
       () => { }

@@ -1,43 +1,45 @@
-<div class="row">
+<ul>
 
-  <div class="col-2">
-    <img class="img-fluid" [src]="collegue.photoUrl">
+  <div class="row">
+    <div class="col-4">
+      <img class="img-fluid" [src]="collegue.photoUrl">
+    </div>
+
+    <div class="col">
+      <li>Matricule : {{collegue.matricule}}</li>
+      <li>Nom : {{collegue.nom | uppercase}}</li>
+      <li>Prénoms : {{collegue.prenoms}}</li>
+      <li>Date de naissance : {{collegue.dateDeNaissance | date : 'dd/MM/yyyy'}}</li>
+      <li *ngIf="!modeEdition">E-mail : {{collegue.email}}</li>
+
+      <form *ngIf="modeEdition" (ngSubmit)="submit()">
+
+        <div class="row">
+          <label class="col">E-mail :</label><input [(ngModel)]="collegueModif.email" type="text"
+            class="col form-control" name="email" />
+        </div>
+
+        <div class="row">
+          <label class="col">Photo URL :</label><input [(ngModel)]="collegueModif.photoUrl" type="text"
+            class="col form-control" name="photoUrl" />
+        </div>
+
+        <button class="btn btn-primary float-right" type="submit">Valider</button>
+
+      </form>
+
+      <form (ngSubmit)="creerCollegue()" *ngIf="!modeEdition">
+        <li>
+          <button class="btn btn-primary" type="submit">
+            Créer un nouveau collègue
+          </button>
+          <button class="btn btn-primary float-right" (click)="modifierCollegue()">
+            Modifier
+          </button>
+        </li>
+      </form>
+
+    </div>
   </div>
 
-  <div class="col-2">
-    <ul>
-      <li>Matricule</li>
-      <li>Nom</li>
-      <li>Prénoms</li>
-      <li>Date de naissance</li>
-      <li *ngIf="!modeEdition">E-mail</li>
-      <ng-container *ngIf="modeEdition">
-        <li> <label for="nouveauMail">E-mail</label> </li>
-        <li> <label for="nouvellePhoto">Photo URL</label> </li>
-      </ng-container>
-    </ul>
-    <button *ngIf="!modeEdition" class="btn btn-primary" (click)="creerCollegue()">
-      Créer un nouveau collègue
-    </button>
-  </div>
-
-  <div class="col-2">
-    <ul>
-      <li>{{collegue.matricule}}</li>
-      <li>{{collegue.nom | uppercase}}</li>
-      <li>{{collegue.prenoms}}</li>
-      <li>{{collegue.dateDeNaissance | date : 'dd/MM/yyyy'}}</li>
-      <li *ngIf="!modeEdition">{{collegue.email}}</li>
-      <div *ngIf="modeEdition" class="form-group">
-        <input type="text" class="form-control" #nouveauMail />
-        <input type="text" class="form-control" #nouvellePhoto />
-        <button class="btn btn-primary float-right">Valider</button>
-      </div>
-    </ul>
-
-    <button *ngIf="!modeEdition" class="btn btn-primary float-right" (click)="modifierCollegue()">
-      Modifier
-    </button>
-
-  </div>
-</div>
+</ul>
