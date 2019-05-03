@@ -53,7 +53,6 @@ export class DataService {
 
   modifierEmail(matricule:string, nouveauMail: string): Observable<Collegue> {
     const body = {
-      'matricule' : matricule,
       'email': nouveauMail
     }
     return this._http.patch<Collegue>(`${URL_BACKEND}/collegues/${matricule}`, body)
@@ -62,10 +61,9 @@ export class DataService {
       }));
   }
 
-  modifierPhotoUrl(matricule:string, nouvelPhotoUrl: string): Observable<Collegue> {
+  modifierPhotoUrl(matricule:string, nouvellePhotoUrl: string): Observable<Collegue> {
     const body = {
-      'matricule' : matricule,
-      'photoUrl': nouvelPhotoUrl
+      'photoUrl': nouvellePhotoUrl
     }
     return this._http.patch<Collegue>(`${URL_BACKEND}/collegues/${matricule}`, body)
       .pipe(tap(collegue => {
