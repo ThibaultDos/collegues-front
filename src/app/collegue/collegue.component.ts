@@ -4,6 +4,8 @@ import { DataService } from '../services/data.service';
 
 import { Collegue } from '../models/Collegue';
 
+const imageParDefaut: string = "https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fdhs.gov%2Fsites%2Fdefault%2Ffiles%2Fimages%2FREAL-ID_icon_public.png&f=1";
+let imageBackup = '';
 @Component({
   selector: 'app-collegue',
   templateUrl: './collegue.component.html',
@@ -11,14 +13,16 @@ import { Collegue } from '../models/Collegue';
 })
 export class CollegueComponent implements OnInit {
 
-  @Input() collegue: Collegue;
+  collegue: Collegue = new Collegue('', '', '', undefined, '', imageParDefaut);
+  collegueModif: Collegue = new Collegue('', '', '', undefined, '', imageParDefaut);
+  collegueAjout: Collegue = new Collegue('', '', '', undefined, '', imageParDefaut);
 
-  collegueModif: Collegue;
-
-  constructor(private _dataService: DataService) { }
+  dernierCollegueSelect: Collegue;
 
   modeEdition: boolean = false;
   modeCreation: boolean = false;
+
+  constructor(private _dataService: DataService) { }
 
   ngOnInit() {
     this._dataService.subjectCollegue.subscribe(
@@ -28,52 +32,61 @@ export class CollegueComponent implements OnInit {
     )
   }
 
-  creerCollegue() {
-    console.log("Création d'un nouveau collègue");
-    this.modeEdition = false;
-    this.modeCreation = true;
+  submit() {
+    if (this.modeCreation) {
+      this.collegue.photoUrl = imageParDefaut;
+      this._dataService.ajouterCollegue(this.collegueAjout)
+        .subscribe(
+          (col) => {
+            this.collegue = col
+          },
+          (error: Error) => { },
+          () => { }
+        );
+      this.modeCreation = false;
+    } else if (this.modeEdition) {
+
+      this.collegueModif.matricule = this.collegue.matricule;
+      const email: string = this.collegueModif.email;
+      const photoUrl: string = this.collegueModif.photoUrl;
+
+      if (email) {
+        this._dataService.modifierEmail(this.collegueModif.matricule, email)
+          .subscribe(
+            (col) => { this.collegueModif = col },
+            error => { },
+            () => { }
+          );
+      }
+      if (photoUrl) {
+        this._dataService.modifierPhotoUrl(this.collegueModif.matricule, photoUrl)
+          .subscribe(
+            (col) => { this.collegue = col },
+            error => { },
+            () => { }
+          );
+      }
+    }
   }
 
-  modifierCollegue() {
+  creation(): void {
+    imageBackup = this.collegue.photoUrl;
+    this.collegue.photoUrl = imageParDefaut;
+
+    console.log("Création d'un nouveau collègue");
+    this.modeCreation = true;
+    this.modeEdition = false;
+  }
+
+  edition(): void {
     console.log(`Modification du collègue`);
     this.modeEdition = true;
-    this.collegueModif = new Collegue(
-      this.collegue.matricule,
-      this.collegue.nom,
-      this.collegue.prenoms,
-      this.collegue.email,
-      this.collegue.dateDeNaissance,
-      this.collegue.photoUrl
-    );
+    this.modeCreation = false;
   }
 
-  submit() {
+  annuler() {
+    this.collegue.photoUrl = imageBackup;
+    this.modeCreation = false;
     this.modeEdition = false;
-    console.log(this.collegueModif);
-    const email = this.collegueModif.email;
-    const photoUrl = this.collegueModif.photoUrl;
-
-    if (email) {
-      this._dataService.modifierEmail(this.collegueModif.matricule, email)
-        .subscribe(
-          (col) => { this.collegue = col },
-          error => { },
-          () => { }
-        );
-    }
-
-    if (photoUrl) {
-      this._dataService.modifierPhotoUrl(this.collegueModif.matricule, photoUrl)
-        .subscribe(
-          (col) => { this.collegue = col },
-          error => { },
-          () => { }
-        );
-    }
-
   }
-
-
-
-
 }

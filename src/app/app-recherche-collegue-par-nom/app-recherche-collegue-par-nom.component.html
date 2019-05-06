@@ -1,5 +1,5 @@
-<p>Recherche par nom
-  <input type="texte" #nomCollegue />
+<p class="row" style="margin-left : 10px">Recherche par nom
+  <input class="form-control col-4" style="margin-left : 10px" type="texte" #nomCollegue />
   <button class="btn btn-primary" (click)="afficherMatriculeDepuisNom(nomCollegue)">Rechercher</button>
 </p>
 
@@ -9,8 +9,6 @@
 
 <ul class="nav flex-column">
   <li *ngFor="let matriculeCollegue of listeMatricules" class="nav-item">
-    <a class="nav-link" href="#" (click)="afficherCollegueDepuisMatricule(matriculeCollegue)">{{matriculeCollegue}}</a>
+    <button type="button" class="btn btn-link" (click)="afficherCollegueDepuisMatricule(matriculeCollegue)">{{matriculeCollegue}}</button>
   </li>
 </ul>
-
-

@@ -2,44 +2,85 @@
 
   <div class="row">
     <div class="col-4">
-      <img class="img-fluid" [src]="collegue.photoUrl">
+      <img *ngIf="collegue.photoUrl" class="img-fluid" [src]="collegue.photoUrl"
+        alt="Aucune photo définie.">
+
     </div>
 
-    <div class="col">
+    <div *ngIf="!modeCreation" class="col">
       <li>Matricule : {{collegue.matricule}}</li>
       <li>Nom : {{collegue.nom | uppercase}}</li>
       <li>Prénoms : {{collegue.prenoms}}</li>
       <li>Date de naissance : {{collegue.dateDeNaissance | date : 'dd/MM/yyyy'}}</li>
       <li *ngIf="!modeEdition">E-mail : {{collegue.email}}</li>
+      <li *ngIf="!modeEdition && !modeCreation" (click)="creation()">
+        <button class="btn btn-primary" type="submit">
+          Créer un nouveau collègue
+        </button>
+        <button class="btn btn-primary float-right" (click)="edition()">
+          Modifier
+        </button>
+      </li>
 
-      <form *ngIf="modeEdition" (ngSubmit)="submit()">
+      <form *ngIf="modeEdition" (ngSubmit)="submit()" #editionForm="ngForm">
 
-        <div class="row">
+        <li class="row">
           <label class="col">E-mail :</label><input [(ngModel)]="collegueModif.email" type="text"
-            class="col form-control" name="email" />
-        </div>
-
-        <div class="row">
-          <label class="col">Photo URL :</label><input [(ngModel)]="collegueModif.photoUrl" type="text"
-            class="col form-control" name="photoUrl" />
-        </div>
-
-        <button class="btn btn-primary float-right" type="submit">Valider</button>
-
-      </form>
-
-      <form (ngSubmit)="creerCollegue()" *ngIf="!modeEdition">
-        <li>
-          <button class="btn btn-primary" type="submit">
-            Créer un nouveau collègue
-          </button>
-          <button class="btn btn-primary float-right" (click)="modifierCollegue()">
-            Modifier
-          </button>
+            class="form-control col" name="email" #email="ngModel" />
         </li>
-      </form>
 
+        <li class="row">
+          <label class="col">Photo URL :</label><input [(ngModel)]="collegueModif.photoUrl" type="text"
+            class="form-control col" name="photoUrl" minlength="7" #photoUrl="ngModel" required appUrlValidator />
+        </li>
+
+        <li class="row">
+          <div class="col">
+            <button class="btn btn-primary" (click)="annuler()">Annuler</button>
+            <button class="btn btn-primary float-right" type="submit">Valider</button>
+          </div>
+        </li>
+        <p *ngIf="photoUrl.dirty && photoUrl.invalid" class="float-right"> vérifiez l'URL de la photo.</p>
+        <p *ngIf="email.dirty && email.invalid" class="float-right"> vérifiez l'e-mail.</p>
+        <p *ngIf="editionForm.dirty && editionForm.invalid" class="float-right">Au moins un champ du formulaire est
+          invalide -> </p>
+
+      </form>
     </div>
+
+    <form *ngIf="modeCreation" (ngSubmit)="submit()" #createForm="ngForm">
+      <li class="row">
+        <label class="col">Nom : </label><input [(ngModel)]="collegueAjout.nom" type="text" class="form-control col"
+          name="nom" required #nom />
+      </li>
+      <li class="row">
+        <label class="col">Prénoms :</label><input [(ngModel)]="collegueAjout.prenoms" type="text"
+          class="form-control col" name="prenoms" required #prenoms="ngModel" />
+      </li>
+      <li class="row">
+        <label class="col">Date de naissance : </label><input [(ngModel)]="collegueAjout.dateDeNaissance" type="date"
+          class="form-control col" name="dateDeNaissance" required #dateDeNaissance="ngModel" />
+      </li>
+      <li class="row">
+        <label class="col">E-mail :</label><input [(ngModel)]="collegueAjout.email" type="text" class="form-control col"
+          name="email" #email="ngModel" />
+      </li>
+      <li class="row">
+        <label class="col">Photo URL :</label><input [(ngModel)]="collegueAjout.photoUrl" type="text"
+          class="form-control col" name="photoUrl" #photoUrl="ngModel" required appUrlValidator />
+      </li>
+      <li>
+        <div class="col">
+          <button class="btn btn-primary" (click)="annuler()">Annuler</button>
+          <button class="btn btn-primary float-right" type="submit">Créer</button>
+        </div>
+      </li>
+      <p *ngIf="photoUrl.dirty && photoUrl.invalid" class="float-right"> vérifiez l'URL de la photo.</p>
+      <p *ngIf="email.dirty && email.invalid" class="float-right"> vérifiez l'e-mail.</p>
+      <p *ngIf="createForm.dirty && createForm.invalid" class="float-right">Au moins un champ du formulaire est invalide
+        -> </p>
+    </form>
+
   </div>
 
 </ul>

@@ -6,7 +6,7 @@ import { tap } from "rxjs/operators";
 
 import { Collegue } from '../models/Collegue';
 
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 const URL_BACKEND = environment.backendURL;
 
 @Injectable({
@@ -41,17 +41,25 @@ export class DataService {
     return this._http.get<string[]>(`${URL_BACKEND}/collegues/matricules`);
   }
 
+  recupererToutesLesPhotos(): Observable<string[]> {
+    return this._http.get<string[]>(`${URL_BACKEND}/collegues/photos`);
+  }
+
   ajouterCollegue(nouveauCollegue: Collegue): Observable<Collegue> {
     const body = {
       'nom': nouveauCollegue.nom,
       'prenoms': nouveauCollegue.prenoms,
       'dateDeNaissance': nouveauCollegue.dateDeNaissance,
+      'email': nouveauCollegue.email,
       'photoUrl': nouveauCollegue.photoUrl
     }
-    return this._http.post<Collegue>(`${URL_BACKEND}/collegues`, body);
+    return this._http.post<Collegue>(`${URL_BACKEND}/collegues`, body)
+      .pipe(tap(collegue => {
+        this.publish(collegue)
+      }));
   }
 
-  modifierEmail(matricule:string, nouveauMail: string): Observable<Collegue> {
+  modifierEmail(matricule: string, nouveauMail: string): Observable<Collegue> {
     const body = {
       'email': nouveauMail
     }
@@ -61,7 +69,7 @@ export class DataService {
       }));
   }
 
-  modifierPhotoUrl(matricule:string, nouvellePhotoUrl: string): Observable<Collegue> {
+  modifierPhotoUrl(matricule: string, nouvellePhotoUrl: string): Observable<Collegue> {
     const body = {
       'photoUrl': nouvellePhotoUrl
     }
@@ -70,5 +78,4 @@ export class DataService {
         this.publish(collegue)
       }));
   }
-
 }
