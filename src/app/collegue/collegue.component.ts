@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { DataService } from '../services/data.service';
 
@@ -16,8 +16,6 @@ export class CollegueComponent implements OnInit {
   collegue: Collegue = new Collegue('', '', '', undefined, '', imageParDefaut);
   collegueModif: Collegue = new Collegue('', '', '', undefined, '', imageParDefaut);
   collegueAjout: Collegue = new Collegue('', '', '', undefined, '', imageParDefaut);
-
-  dernierCollegueSelect: Collegue;
 
   modeEdition: boolean = false;
   modeCreation: boolean = false;

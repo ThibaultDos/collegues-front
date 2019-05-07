@@ -1,5 +1,8 @@
-<ul class="nav flex-column">
-  <li *ngFor="let photoCollegue of afficherToutesLesPhotos" class="nav-item">
-    <img class="img-fluid" [src]="photoCollegue" alt="Aucune photo définie.">
-  </li>
-</ul>
+<div class="row">
+  <ng-container *ngFor="let collegue of listeColleguePhoto">
+    <button type="button" class="btn btn-link col-2" routerLink="/galerie/{{collegue.matricule}}">
+      <img class="img-fluid img-thumbnail" [src]="collegue.photoUrl">
+    </button>
+  </ng-container>
+</div>
+<span class="text-danger" *ngIf="msgError">{{msgError}}</span>

@@ -5,8 +5,9 @@ import { Subject, Observable } from 'rxjs';
 import { tap } from "rxjs/operators";
 
 import { Collegue } from '../models/Collegue';
+import { ColleguePhoto } from '../models/ColleguePhoto';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 const URL_BACKEND = environment.backendURL;
 
 @Injectable({
@@ -41,8 +42,8 @@ export class DataService {
     return this._http.get<string[]>(`${URL_BACKEND}/collegues/matricules`);
   }
 
-  recupererToutesLesPhotos(): Observable<string[]> {
-    return this._http.get<string[]>(`${URL_BACKEND}/collegues/photos`);
+  recupererToutesLesPhotos(): Observable<ColleguePhoto[]> {
+    return this._http.get<ColleguePhoto[]>(`${URL_BACKEND}/collegues/photos`);
   }
 
   ajouterCollegue(nouveauCollegue: Collegue): Observable<Collegue> {

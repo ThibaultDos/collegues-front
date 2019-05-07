@@ -14,9 +14,10 @@ import { UrlValidatorDirective } from './validators/url-validator.directive';
 import { AccueilComponent } from './accueil/accueil.component';
 import { GalerieComponent } from './galerie/galerie.component';
 import { AproposComponent } from './apropos/apropos.component';
+import { InfoscollegueComponent } from './infoscollegue/infoscollegue.component';
 
 @NgModule({
-  declarations: [AppComponent, CollegueComponent, AppRechercheCollegueParNomComponent, UrlValidatorDirective, EmailValidatorDirective, MenuComponent, AccueilComponent, GalerieComponent, AproposComponent],
+  declarations: [AppComponent, CollegueComponent, AppRechercheCollegueParNomComponent, UrlValidatorDirective, EmailValidatorDirective, MenuComponent, AccueilComponent, GalerieComponent, AproposComponent, InfoscollegueComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(ROUTES)],
   providers: [],
   bootstrap: [AppComponent]

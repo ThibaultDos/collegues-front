@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ColleguePhoto } from '../models/ColleguePhoto';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -8,19 +9,22 @@ import { DataService } from '../services/data.service';
 })
 export class GalerieComponent implements OnInit {
 
-  listePhotoUrl: string[];
+  listeColleguePhoto: ColleguePhoto[];
+  public msgError: string;
 
   constructor(private _dataService: DataService) { }
 
   ngOnInit() {
+    this.afficherToutesLesPhotos()
   }
 
-  afficherToutesLesPhotos() {
+  afficherToutesLesPhotos(): void {
     this._dataService.recupererToutesLesPhotos()
-      .subscribe(toutesLesPhotosServeur => {
-        this.listePhotoUrl = toutesLesPhotosServeur
+      .subscribe(photoServeur => {
+        this.listeColleguePhoto = photoServeur;
       },
-        error => { },
+        (error: Error) => { this.msgError = `${error.name} survenue pendant la récupération des photos:\n ${error.message}`
+      console.error(`${error.name} survenue pendant la récupération des photos:\n ${error.message}`) },
         () => { }
       );
   }
