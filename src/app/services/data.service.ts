@@ -7,7 +7,7 @@ import { tap } from "rxjs/operators";
 import { Collegue } from '../models/Collegue';
 import { ColleguePhoto } from '../models/ColleguePhoto';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 const URL_BACKEND = environment.backendURL;
 
 @Injectable({
