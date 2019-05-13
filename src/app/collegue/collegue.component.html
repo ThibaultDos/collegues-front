@@ -2,8 +2,7 @@
 
   <div class="row">
     <div class="col-4">
-      <img *ngIf="collegue.photoUrl" class="img-fluid" [src]="collegue.photoUrl"
-        alt="Aucune photo définie.">
+      <img *ngIf="collegue.photoUrl" class="img-fluid" [src]="collegue.photoUrl" alt="Aucune photo définie.">
 
     </div>
 
@@ -40,10 +39,10 @@
             <button class="btn btn-primary float-right" type="submit">Valider</button>
           </div>
         </li>
-        <p *ngIf="photoUrl.dirty && photoUrl.invalid" class="float-right"> vérifiez l'URL de la photo.</p>
-        <p *ngIf="email.dirty && email.invalid" class="float-right"> vérifiez l'e-mail.</p>
-        <p *ngIf="editionForm.dirty && editionForm.invalid" class="float-right">Au moins un champ du formulaire est
-          invalide -> </p>
+        <p *ngIf="photoUrl.dirty && photoUrl.invalid" class="text-right"> Vérifiez l'URL de la photo.</p>
+        <p *ngIf="email.dirty && email.invalid" class="text-right"> Vérifiez l'e-mail.</p>
+        <p *ngIf="editionForm.dirty && editionForm.invalid" class="text-center">Au moins un champ du formulaire est
+          invalide.</p>
 
       </form>
     </div>
@@ -75,10 +74,10 @@
           <button class="btn btn-primary float-right" type="submit">Créer</button>
         </div>
       </li>
-      <p *ngIf="photoUrl.dirty && photoUrl.invalid" class="float-right"> vérifiez l'URL de la photo.</p>
-      <p *ngIf="email.dirty && email.invalid" class="float-right"> vérifiez l'e-mail.</p>
-      <p *ngIf="createForm.dirty && createForm.invalid" class="float-right">Au moins un champ du formulaire est invalide
-        -> </p>
+      <p *ngIf="photoUrl.dirty && photoUrl.invalid" class="text-center"> Vérifiez l'URL de la photo.</p>
+      <p *ngIf="email.dirty && email.invalid" class="text-center"> Vérifiez l'e-mail.</p>
+      <p *ngIf="createForm.dirty && createForm.invalid" class="text-center">Au moins un champ du formulaire est
+        invalide.</p>
     </form>
 
   </div>

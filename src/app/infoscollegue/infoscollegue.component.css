@@ -3,6 +3,14 @@ li
     list-style-type: none;
 }
 
-.img-fluid{
-    height : 42rem;
+.img-fluid
+{
+    min-width:21rem;
+    max-width : 42rem;
+    max-height : 42rem;
+}
+
+#prev, #next
+{
+margin :auto;
 }

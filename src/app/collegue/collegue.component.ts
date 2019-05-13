@@ -70,13 +70,13 @@ export class CollegueComponent implements OnInit {
   creation(): void {
     imageBackup = this.collegue.photoUrl;
     this.collegue.photoUrl = imageParDefaut;
-
     console.log("Création d'un nouveau collègue");
     this.modeCreation = true;
     this.modeEdition = false;
   }
 
   edition(): void {
+    imageBackup = this.collegue.photoUrl;
     console.log(`Modification du collègue`);
     this.modeEdition = true;
     this.modeCreation = false;

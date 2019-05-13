@@ -1,10 +1,33 @@
-<div class="col text-center">
-  <li><img class="img-fluid rounded" [src]="displayedCollegue.photoUrl"></li>
-  <p class="offset-5 text-left">
-    <li>Matricule : {{displayedCollegue.matricule}}</li>
-    <li>Nom : {{displayedCollegue.nom | uppercase}}</li>
-    <li>Prénoms : {{displayedCollegue.prenoms}}</li>
-    <li>Date de naissance : {{displayedCollegue.dateDeNaissance | date : 'dd/MM/yyyy'}}</li>
-    <li>E-mail : {{displayedCollegue.email}}</li>
-  </p>
+<div class="row">
+  <div *ngIf="matriculePrev" class="col text-right" id="prev">
+    <button type="button" class="btn btn-link" routerLink="/galerie/{{matriculePrev}}"><i
+        class="fas fa-arrow-left"></i></button>
+  </div>
+  <div *ngIf="!matriculePrev" class="col"></div>
+  <div class="col text-center">
+    <li><img class="img-fluid rounded" [src]="displayedCollegue.photoUrl"></li>
+    <p class="offset text-left">
+      <li>Matricule : {{displayedCollegue.matricule}}</li>
+      <li>Nom : {{displayedCollegue.nom | uppercase}}</li>
+      <li>Prénoms : {{displayedCollegue.prenoms}}</li>
+      <li>Date de naissance : {{displayedCollegue.dateDeNaissance | date : 'dd/MM/yyyy'}}</li>
+      <li>E-mail : {{displayedCollegue.email}}</li>
+    </p>
+  </div>
+  <div *ngIf="matriculeNext" class="col text-left" id="next">
+    <button type="button" class="btn btn-link" routerLink="/galerie/{{matriculeNext}}"><i
+        class="fas fa-arrow-right"></i></button>
+  </div>
+  <div *ngIf="!matriculeNext" class="col"></div>
 </div>
+
+
+<textarea class="form-control" aria-label="With textarea" rows="4" placeholder="Ici on pourra (dans un hypothétique futur proche) prendre des notes pour un collègue.
+
+
+          Taper 'entrée' pour enregistrer la note."></textarea>
+
+<p>note précédente</p>
+<p>une autre note</p>
+<p> encore une autre</p>
+<p>une dernière pour la route</p>

@@ -15,9 +15,11 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { GalerieComponent } from './galerie/galerie.component';
 import { AproposComponent } from './apropos/apropos.component';
 import { InfoscollegueComponent } from './infoscollegue/infoscollegue.component';
+import { IdentificationComponent } from './services/identification/identification.component';
+import { MeComponent } from './services/identification/me/me.component';
 
 @NgModule({
-  declarations: [AppComponent, CollegueComponent, AppRechercheCollegueParNomComponent, UrlValidatorDirective, EmailValidatorDirective, MenuComponent, AccueilComponent, GalerieComponent, AproposComponent, InfoscollegueComponent],
+  declarations: [AppComponent, CollegueComponent, AppRechercheCollegueParNomComponent, UrlValidatorDirective, EmailValidatorDirective, MenuComponent, AccueilComponent, GalerieComponent, AproposComponent, InfoscollegueComponent, IdentificationComponent, MeComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(ROUTES)],
   providers: [],
   bootstrap: [AppComponent]

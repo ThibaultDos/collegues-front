@@ -1,0 +1,20 @@
+<div  routerLink="/me"></div>
+
+<div *ngIf="!loggedIn">
+<h2 class="text-center">Veuillez montrer patte blanche</h2>
+  <form (ngSubmit)="identification()" #createForm="ngForm" class="text-center">
+    <li class="row">
+      <label class="col">Identifiant : </label><input [(ngModel)]="user.identifiant" type="text"
+        class="form-control col" placeholder="Entrez votre adresse mail" name="identifiant" required #identifiant />
+    </li>
+    <li class="row">
+      <label class="col">Mot de passe :</label><input [(ngModel)]="user.motDePasse" type="password"
+        class="form-control col" placeholder="Entrez votre mot de passe" name="password" required #password="ngModel" />
+    </li>
+    <button class="btn btn-primary" type="submit">Valider</button>
+    <p *ngIf="identifiant.dirty && identifiant.invalid" class="text-center"> Vérifiez votre identifiant.</p>
+    <p *ngIf="password.dirty && password.invalid" class="text-center"> Vérifiez votre mot de passe.</p>
+    <p *ngIf="createForm.dirty && createForm.invalid" class="text-center">Au moins un champ du formulaire est
+      invalide.</p>
+  </form>
+</div>
