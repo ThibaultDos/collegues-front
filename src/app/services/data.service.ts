@@ -7,7 +7,7 @@ import { tap } from "rxjs/operators";
 import { Collegue } from '../models/Collegue';
 import { ColleguePhoto } from '../models/ColleguePhoto';
 
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 const URL_BACKEND = environment.backendURL;
 
 @Injectable({
@@ -35,7 +35,7 @@ export class DataService {
   }
 
   rechercherCollegueParMail(): Observable<Collegue> {
-    return this._http.get<Collegue>(`${URL_BACKEND}/me`, {withCredentials : true});
+    return this._http.get<Collegue>(`${URL_BACKEND}/collegues/me`, {withCredentials : true});
   }
 
   rechercherMatriculeParNom(nom: string): Observable<string[]> {
