@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { IdentificationService } from '../services/identification.service';
 
 @Component({
@@ -16,10 +16,12 @@ export class MenuComponent implements OnInit {
   }
 
   disconnect() {
+    this._identificationService.seDeconnecter().subscribe ();
     this._identificationService.logOut();
+    this._router.navigate(['/accueil']);
   }
 
-  constructor(private _identificationService: IdentificationService) { }
+  constructor(private _identificationService: IdentificationService, private _router: Router) { }
 
   ngOnInit() {
     this._identificationService.loggingState().subscribe(retour => this.loggedIn = retour);

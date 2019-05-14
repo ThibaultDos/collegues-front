@@ -3,9 +3,11 @@
     <li *ngIf="!loggedIn" class="nav-item">
       <a class="nav-link" routerLinkActive="active" routerLink="/identification"><button class="btn btn-outline-success"
           type="button">Se connecter</button></a>
+      Vous êtes déconnecté.
     </li>
     <li *ngIf="loggedIn" class="nav-item">
       <button class="btn btn-sm btn-outline-secondary" type="button" (click)="disconnect()">Se déconnecter</button>
+      Vous êtes connecté.
     </li>
   </div>
   <div class="d-flex align-content-center col">

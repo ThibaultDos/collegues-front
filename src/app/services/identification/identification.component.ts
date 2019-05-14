@@ -25,8 +25,12 @@ export class IdentificationComponent implements OnInit {
         (error: Error) => { },
         () => { }
       );
-    this._identificationService.loggingState().subscribe(retour => this.loggedIn = retour);
-    this._router.navigate(['/me']);
+
+    this._identificationService.loggingState().subscribe(retour => {
+      this.loggedIn = retour
+      this._router.navigate(['/me']);
+    });
+    
   }
 
   ngOnInit() {

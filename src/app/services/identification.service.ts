@@ -48,6 +48,10 @@ export class IdentificationService {
     return this._http.get<Collegue>(`${URL_BACKEND}/collegues/me`, { withCredentials: true })
   }
 
+  seDeconnecter(): Observable<Collegue> {
+    return this._http.get<Collegue>(`${URL_BACKEND}/logout`, { withCredentials: true })
+  }
+
   loggingState() {
     return this._loggingSubject.asObservable();
   }
